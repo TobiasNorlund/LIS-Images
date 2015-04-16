@@ -23,7 +23,7 @@ scorefun = skmet.make_scorer(score, greater_is_better=False)
 def load(n_samples = None, load_val=False, load_test=False):
 
     X = h5py.File('project_data/train.h5','r')["data"][0:n_samples,]
-    X_val = h5py.File('project_data/validate.h5', 'r')["data"] if load_val else 0
+    X_val = h5py.File('project_data/validate.h5', 'r')["data"][0:n_samples,] if load_val else 0
     X_test = read_data('project_data/test.csv', get_features_fun) if load_test else 0
     
     Y = sklearn.utils.column_or_1d(h5py.File('project_data/train.h5', 'r')["label"][0:n_samples,])    

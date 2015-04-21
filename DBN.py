@@ -324,7 +324,8 @@ def test_DBN(finetune_lr=0.1, pretraining_epochs=100,
     """
 
     datasets = load_data(dataset)
-
+    
+    print(datasets[0][0])
     train_set_x, train_set_y = datasets[0]
     valid_set_x, valid_set_y = datasets[1]
     test_set_x, test_set_y = datasets[2]
@@ -337,7 +338,7 @@ def test_DBN(finetune_lr=0.1, pretraining_epochs=100,
     print('... building the model')
     # construct the Deep Belief Network
     dbn = DBN(numpy_rng=numpy_rng, n_ins=28 * 28,
-              hidden_layers_sizes=[1000, 1000, 1000],
+              hidden_layers_sizes=[1000],
               n_outs=10)
 
     # start-snippet-2

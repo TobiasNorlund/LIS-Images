@@ -2,7 +2,7 @@
 import classification_base
 import numpy as np
 
-(X, Y, X_val, X_test) = classification_base.load(load_val=True)
+(X, Y, X_val, X_test) = classification_base.load(1000, load_val=True)
 
 def scale(X, X_val, eps = 0.001):
     # scale the data points s.t the columns of the feature space
@@ -29,7 +29,7 @@ text_file.close()
  # Split X to train and test sets
 X_train_train, X_train_test, Y_train_train, Y_train_test= sklearn.cross_validation.train_test_split(X, Y,  test_size=0.33)
 
-X_val = theano.shared(np.asarray(X_val, dtype=theano.config.floatX), borrow=True)
+X_val = theano.shared(np.asarray(X, dtype=theano.config.floatX), borrow=True)
 X_train_train = theano.shared(np.asarray(X_train_train, dtype=theano.config.floatX), borrow=True)
 X_train_test = theano.shared(np.asarray(X_train_test, dtype=theano.config.floatX), borrow=True)
 Y_train_train = theano.shared(np.asarray(Y_train_train, dtype=theano.config.floatX), borrow=True)
@@ -43,10 +43,10 @@ import sys
 import os
 
 finetune_lr=0.1
-pretraining_epochs=30
+pretraining_epochs=20
 pretrain_lr=0.02
 k=1
-training_epochs=100
+training_epochs=50
 batch_size=10
 
 train_set_x, train_set_y = datasets[0]
@@ -61,7 +61,7 @@ numpy_rng = np.random.RandomState(123)
 print('... building the model')
 # construct the Deep Belief Network
 dbn = DBN(numpy_rng=numpy_rng, n_ins=2048,
-            hidden_layers_sizes=[2000],
+            hidden_layers_sizes=[3000,3000],
             n_outs=10)
 
 start_time = time.clock()

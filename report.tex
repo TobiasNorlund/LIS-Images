@@ -1,0 +1,37 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[pdftex]{hyperref}
+
+% Lengths and indenting
+\setlength{\textwidth}{16.5cm}
+\setlength{\marginparwidth}{1.5cm}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.15cm}
+\setlength{\textheight}{22cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\topmargin}{0cm}
+\setlength{\headheight}{0cm}
+\setlength{\headsep}{0cm}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\title{Introduction to Learning and Intelligent Systems - Spring 2015}
+\author{member1@student.ethz.ch\\ member2@student.ethz.ch\\ fabmuell@student.ethz.ch\\}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Project 3 : Image Classification}
+
+\textbf{Tree Classifiers} \newline
+In a first step, we tried to use tree classifiers. This approach worked quiet well in the previous classification project, so we thought we could use a similar method this time. Comparing with the last project, the dimensions were now much bigger: There were 2048 features and 10 different classes. We used the sklearn-library, but it turned out that this wasn't the right way to go. We couldn't even pass the baseline easy. \newline
+
+\textbf{Matlab Neural Network Toolbox} \newline
+In a further step, we decided to try not only to write in Python, but also use Matlab with its Neural Network Toolbox. A simple Patternnet with 20 hidden neuros was sufficient to pass the baseline easy. So we tested the Patternnet and Fitnet with different train and performance functions. The scaled conjugate gradient backpropagation seemed to work best for both nets, we could improve our results to 0.2428 when we used 200 hidden neuros. We also tried to use 2000 hidden neuros: The computation time was a bit more than 4 hours, but the result was worse than with only 200 hidden neurons. 
+
+
+
+\end{document}
